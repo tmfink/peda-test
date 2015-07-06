@@ -1,0 +1,10 @@
+# Binaries
+bin/
+
+# output files
+gdb_test_1.out
+gdb_test_2.out
+
+# PEDA temp files
+peda-session-*
+peda-crashdump-*
