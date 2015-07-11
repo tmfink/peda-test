@@ -1,0 +1,3 @@
+nop; nop; ret
+inc eax; ret
+end
