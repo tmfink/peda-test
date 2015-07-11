@@ -12,10 +12,21 @@ if [[ $# -ne 4 ]]; then
     exit 1
 fi
 
+function check_files_exist {
+    for arg in "$@"; do
+        if [[ ! -e "$arg" ]]; then
+            echo "File $arg does not exists!"
+            exit 1
+        fi
+    done
+}
+
 PROGRAM="$1"
 TEST_GDB_SCRIPT="$2"
 GDB1="$3"
 PEDA1="$4"
+
+check_files_exist "$PROGRAM" "$TEST_GDB_SCRIPT" "$PEDA1"
 
 function run_test {
     local gdb="$1"

@@ -13,6 +13,15 @@ if [[ $# -ne 6 ]]; then
     exit 1
 fi
 
+function check_files_exist {
+    for arg in "$@"; do
+        if [[ ! -e "$arg" ]]; then
+            echo "File $arg does not exists!"
+            exit 1
+        fi
+    done
+}
+
 PROGRAM="$1"
 TEST_GDB_SCRIPT="$2"
 
@@ -21,6 +30,8 @@ PEDA1="$4"
 
 GDB2="$5"
 PEDA2="$6"
+
+check_files_exist "$PROGRAM" "$TEST_GDB_SCRIPT" "$PEDA1" "$PEDA2"
 
 TMP_FILE1="gdb_test_1.out"
 TMP_FILE2="gdb_test_2.out"

@@ -2,9 +2,10 @@
 #include <string.h>
 #include <stdlib.h>
 
+char *overflow_me = "overflow me : ";
 void func(int key){
     char overflowme[32];
-    printf("overflow me : ");
+    printf("%s", overflow_me);
     fgets(overflowme, 200, stdin);    // smash me!
     if(key == 0xcafebabe){
         system("/bin/sh");
